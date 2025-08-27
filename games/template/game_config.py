@@ -10,7 +10,7 @@ class GameConfig(Config):
 
     def __init__(self):
         super().__init__()
-        self.game_id = "Kodys Game of doom"
+        self.game_id = "template"
         self.provider_numer = 0
         self.working_name = ""
         self.wincap = 5000.0
