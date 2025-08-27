@@ -5,6 +5,7 @@ from src.calculations.scatter import Scatter
 class GameState(GameStateOverride):
     """Gamestate for a single spin"""
 
+    #simulating spins for books
     def run_spin(self, sim: int):
         self.reset_seed(sim)
         self.repeat = True
@@ -14,7 +15,7 @@ class GameState(GameStateOverride):
 
             self.get_scatterpays_update_wins()
             self.emit_tumble_win_events()  # Transmit win information
-
+            #while there are wins and wincap not triggered, tumble the board and get new wins
             while self.win_data["totalWin"] > 0 and not (self.wincap_triggered):
                 self.tumble_game_board()
                 self.get_scatterpays_update_wins()
@@ -22,6 +23,7 @@ class GameState(GameStateOverride):
             self.set_end_tumble_event()
             self.win_manager.update_gametype_wins(self.gametype)
 
+            #checks for freespin entry condition and runs freespins if met
             if self.check_fs_condition() and self.check_freespin_entry():
                 self.run_freespin_from_base()
 

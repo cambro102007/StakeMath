@@ -29,6 +29,7 @@ class GameConfig(Config):
         self.num_rows = [3] * self.num_reels  # Optionally include variable number of rows per reel
         # Board and Symbol Properties
         self.paytable = {
+            
             (5, "H1"): 10,
             (4, "H1"): 5,
             (3, "H1"): 3,

@@ -11,18 +11,19 @@ from src.write_data.write_configs import generate_configs
 
 if __name__ == "__main__":
 
-    num_threads = 10
+    num_threads = 1
     rust_threads = 20
     batching_size = 50000
     compression = False
     profiling = False
 
     num_sim_args = {
-        "base": int(1e2),
+        "base": 100,
+        "bonus": 100,
     }
 
     run_conditions = {
-        "run_sims": False,
+        "run_sims": True,
         "run_optimization": False,
         "run_analysis": False,
         "upload_data": True,
@@ -53,17 +54,7 @@ if __name__ == "__main__":
 
     if run_conditions["run_analysis"]:
         custom_keys = [{"symbol": "scatter"}]
-        run(config.game_id, custom_keys=custom_keys)
+        create_stat_sheet(gamestate, custom_keys=custom_keys)
 
-    if run_conditions["upload_data"]:
-        upload_items = {
-            "books": True,
-            "lookup_tables": True,
-            "force_files": True,
-            "config_files": True,
-        }
-        upload_to_aws(
-            gamestate,
-            target_modes,
-            upload_items,
-        )
+    if run_conditions["run_format_checks"]:
+        execute_all_tests(config)

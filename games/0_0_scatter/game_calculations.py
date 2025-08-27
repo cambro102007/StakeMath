@@ -12,6 +12,7 @@ class GameCalculations(Executables):
         mult_info = []
         for reel, _ in enumerate(self.board):
             for row, _ in enumerate(self.board[reel]):
+                #checks reel row for M or the multiplier symbol
                 if self.board[reel][row].check_attribute(multiplier_key):
                     board_mult += self.board[reel][row].get_attribute(multiplier_key)
                     mult_info.append(

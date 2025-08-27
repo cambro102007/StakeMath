@@ -1,6 +1,6 @@
 BOARD_MULT_INFO = "boardMultiplierInfo"
 
-
+#multiplyers
 def send_mult_info_event(gamestate, board_mult: int, mult_info: dict, base_win: float, updatedWin: float):
     multiplier_info, winInfo = {}, {}
     multiplier_info["positions"] = []
